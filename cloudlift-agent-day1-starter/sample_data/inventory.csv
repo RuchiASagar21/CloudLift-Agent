@@ -1,0 +1,4 @@
+app_name,env,business_owner,os,cpu_cores,ram_gb,disk_gb,db_engine,db_size_gb,rpo_min,rto_min,ports,compliance,uptime_slo,dependencies,notes
+erp,prod,Finance,linux,2,4,40,postgres,3,15,30,"80,443,5432",sox,99.5,"smtp,ad","lightweight demo app"
+lims,dev,LabOps,linux,2,4,30,mysql,2,30,60,"8080,3306",gxp,99.0,"ad","reads CSV from S3"
+portal,test,IT,linux,1,2,20,sqlite,0.2,60,60,"80,443",none,98.0,"","static site + tiny API"

@@ -1,0 +1,27 @@
+# Build & Python
+__pycache__/
+*.pyc
+.venv/
+.env
+.envrc
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+
+# Terraform / CDK
+*.tfstate
+*.tfstate.*
+.terraform/
+.cdk.out/
+
+# Local artifacts
+artifacts/
+*.zip
+*.log
+
+# Secrets (ensure you never commit real secrets)
+secrets.json
+secrets/*

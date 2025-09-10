@@ -1,0 +1,19 @@
+flowchart LR
+  UI[Web UI / Streamlit] -->|Upload inventory| S3[(S3 sample_data)]
+  UI --> API[API Gateway]
+  API --> AGENT[Bedrock AgentCore + Nova]
+  AGENT -->|tool:parse_inventory| L1[(Lambda: parse_inventory)]
+  AGENT -->|tool:plan_topology| L2[(Lambda: plan_topology)]
+  AGENT -->|tool:estimate_costs| L3[(Lambda: estimate_costs)]
+  AGENT -->|tool:generate_iac| L4[(Lambda: generate_iac)]
+  AGENT -->|tool:provision| SFN[Step Functions]
+  SFN --> L5[(Lambda: provision/mock)]
+  AGENT -->|tool:validate| L6[(Lambda: validate)]
+  AGENT -->|tool:report| L7[(Lambda: report)]
+  L2 --> DDB[(DynamoDB state)]
+  L4 --> S3OUT[(S3 artifacts: Terraform, reports)]
+  L6 --> CW[(CloudWatch Logs)]
+  classDef svc fill:#eef,stroke:#99c,stroke-width:1px;
+  classDef store fill:#efe,stroke:#9c9,stroke-width:1px;
+  class L1,L2,L3,L4,L5,L6,L7,API,AGENT,UI svc;
+  class S3,S3OUT,DDB,CW store;

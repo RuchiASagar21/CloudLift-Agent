@@ -1,0 +1,71 @@
+[
+  {
+    "app_name": "erp",
+    "env": "prod",
+    "business_owner": "Finance",
+    "os": "linux",
+    "cpu_cores": 2,
+    "ram_gb": 4,
+    "disk_gb": 40,
+    "db_engine": "postgres",
+    "db_size_gb": 3,
+    "rpo_min": 15,
+    "rto_min": 30,
+    "ports": [
+      80,
+      443,
+      5432
+    ],
+    "compliance": "sox",
+    "uptime_slo": 99.5,
+    "dependencies": [
+      "smtp",
+      "ad"
+    ],
+    "notes": "lightweight demo app"
+  },
+  {
+    "app_name": "lims",
+    "env": "dev",
+    "business_owner": "LabOps",
+    "os": "linux",
+    "cpu_cores": 2,
+    "ram_gb": 4,
+    "disk_gb": 30,
+    "db_engine": "mysql",
+    "db_size_gb": 2,
+    "rpo_min": 30,
+    "rto_min": 60,
+    "ports": [
+      8080,
+      3306
+    ],
+    "compliance": "gxp",
+    "uptime_slo": 99.0,
+    "dependencies": [
+      "ad"
+    ],
+    "notes": "reads CSV from S3"
+  },
+  {
+    "app_name": "portal",
+    "env": "test",
+    "business_owner": "IT",
+    "os": "linux",
+    "cpu_cores": 1,
+    "ram_gb": 2,
+    "disk_gb": 20,
+    "db_engine": "sqlite",
+    "db_size_gb": 0.2,
+    "rpo_min": 60,
+    "rto_min": 60,
+    "ports": [
+      80,
+      443
+    ],
+    "compliance": "none",
+    "uptime_slo": 98.0,
+    "dependencies": [],
+    "notes": "static site + tiny API"
+  }
+]
