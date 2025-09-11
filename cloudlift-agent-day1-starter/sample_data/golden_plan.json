@@ -1,76 +1,48 @@
 {
+  "plan_version": "1.0",
+  "region": "us-east-1",
+  "az_policy": "az-id",
+  "budget_guardrail_usd": 75,
+  "generated_at": "2025-09-11T00:00:00Z",
+  "dry_run_default": true,
   "apps": [
     {
       "name": "erp",
       "target": {
-        "compute": {
-          "service": "ec2",
-          "instance_type": "t3.small",
-          "az": "use1-az1"
-        },
-        "database": {
-          "service": "rds",
-          "engine": "postgres",
-          "size": "db.t4g.micro"
-        },
-        "storage": {
-          "service": "s3",
-          "bucket": "cloudlift-demo-erp"
-        }
+        "compute": { "service": "ec2", "instance_type": "t3.small", "az": "use1-az1" },
+        "database": { "service": "rds", "engine": "postgres", "size": "db.t4g.micro" },
+        "storage":  { "service": "s3", "bucket": "cloudlift-demo-erp" }
       },
+      "provision_default": false,
       "estimated_monthly_usd": 52.4,
-      "rpo_rto": {
-        "rpo_minutes": 15,
-        "rto_minutes": 30
-      }
+      "rpo_rto": { "rpo_minutes": 15, "rto_minutes": 30 }
     },
     {
       "name": "lims",
       "target": {
-        "compute": {
-          "service": "ec2",
-          "instance_type": "t3.micro",
-          "az": "use1-az1"
-        },
-        "database": {
-          "service": "rds",
-          "engine": "mysql",
-          "size": "db.t4g.micro"
-        },
-        "storage": {
-          "service": "s3",
-          "bucket": "cloudlift-demo-lims"
-        }
+        "compute": { "service": "ec2", "instance_type": "t3.micro", "az": "use1-az1" },
+        "database": { "service": "rds", "engine": "mysql", "size": "db.t4g.micro" },
+        "storage":  { "service": "s3", "bucket": "cloudlift-demo-lims" }
       },
+      "provision_default": false,
       "estimated_monthly_usd": 38.2,
-      "rpo_rto": {
-        "rpo_minutes": 30,
-        "rto_minutes": 60
-      }
+      "rpo_rto": { "rpo_minutes": 30, "rto_minutes": 60 }
     },
     {
       "name": "portal",
       "target": {
-        "compute": {
-          "service": "ec2",
-          "instance_type": "t3.nano",
-          "az": "use1-az1"
-        },
+        "compute": { "service": "ec2", "instance_type": "t3.nano", "az": "use1-az1" },
         "database": {
-          "service": "rds-sqlite-compat",
+          "service": "mock",
           "engine": "sqlite",
-          "size": "mock"
+          "size": "mock",
+          "reason": "sqlite not managed in RDS; simulate only"
         },
-        "storage": {
-          "service": "s3",
-          "bucket": "cloudlift-demo-portal"
-        }
+        "storage":  { "service": "s3", "bucket": "cloudlift-demo-portal" }
       },
+      "provision_default": false,
       "estimated_monthly_usd": 6.0,
-      "rpo_rto": {
-        "rpo_minutes": 60,
-        "rto_minutes": 60
-      }
+      "rpo_rto": { "rpo_minutes": 60, "rto_minutes": 60 }
     }
   ]
 }
